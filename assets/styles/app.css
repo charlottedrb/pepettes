@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-beige font-helvetica font-light;
+
+    nav>ul {
+        li {
+            @apply text-30;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+form {
+    label {
+        @apply mr-10;
+    }
+
+    input[type='text'], input[type='password'], input[type='email'], textarea {
+        @apply border-1px border-black p-15;
+
+        &:focus {
+            @apply outline-none;
+        }
+    }
+
+    input[type='range'] {
+        @apply appearance-none h-[5px] rounded-full;
+
+        &::-webkit-slider-thumb {
+            @apply appearance-none bg-black w-[20px] h-[20px] rounded-full;
+        }
+
+        &.range-red {
+            @apply bg-red;
+        }
+
+        &.range-blue {
+            @apply bg-blue;
+        }
+
+        &.range-green {
+            @apply bg-green;
+        }
+    }
+
+    input[type='checkbox'] {
+        @apply appearance-none bg-white border-1px border-black w-[10px] h-[10px] mr-[5px];
+
+        &:checked {
+            @apply bg-blue;
+        }
+    }
+}

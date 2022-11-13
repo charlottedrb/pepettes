@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	<div class="flex justify-center mt-130">
+		<div class="w-7/12 flex flex-col gap-y-20">
+			<h2>Créer un compte</h2>
+
+			{{ form_start(registrationForm, {'attr': {'class': 'flex flex-col gap-y-20'}}) }}
+				<div class="flex gap-x-10 w-full">
+					{{ form_widget(registrationForm.first_name) }}
+					{{ form_widget(registrationForm.last_name) }}
+				</div>
+                {{ form_widget(registrationForm.email) }}
+                {{ form_widget(registrationForm.plainPassword) }}
+			    <button type="submit" class="bg-green border-1px border-black font-commune text-30">Créer un compte</button>
+			{{ form_end(registrationForm) }}
+		</div>
+	</div>
+{% endblock %}

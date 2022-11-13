@@ -1,0 +1,16 @@
+{{ form_start(form, {'attr': {'class': 'flex flex-col gap-y-20'}}) }}
+    {{ form_widget(form.name) }}
+    <div class="flex w-full gap-x-20">
+        <div class="w-full">{{ form_row(form.price_range) }}</div>
+        <div class="w-full">{{ form_row(form.security_level) }}</div>
+        <div class="w-full">{{ form_row(form.charo_rate) }}</div>
+    </div>
+    <div class="flex w-full gap-x-20">
+        <div>{{ form_row(form.has_cocktails) }}</div>
+        <div>{{ form_row(form.has_beers) }}</div>
+        <div>{{ form_row(form.has_wines) }}</div>
+        <div>{{ form_row(form.has_softs) }}</div>
+    </div>
+    {{ form_widget(form) }}
+    <button class="font-commune bg-green hover:bg-blue border-1px border-black text-30 transition-all">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}connexion
+{% endblock %}
+
+{% block body %}
+	<div class="flex justify-center mt-130">
+		<div class="w-7/12 flex flex-col gap-y-20">
+			<form method="post">
+				<h2>Connexion</h2>
+
+                {% if error %}
+					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
+
+				{% if app.user %}
+					<div class="mb-3">
+						Vous êtes connecté(e) en tant que
+						{{ app.user.userIdentifier }},
+						<a href="{{ path('app_logout') }}">Se déconnecter</a>
+					</div>
+				{% endif %}
+
+				<div class="flex flex-col gap-y-20">
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Email" required autofocus>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Mot de passe" required>
+                    <input
+                    type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    {#
+                            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                            See https://symfony.com/doc/current/security/remember_me.html
+                    
+                            <div class="checkbox mb-3">
+                                <label>
+                                    <input type="checkbox" name="_remember_me"> Remember me
+                                </label>
+                            </div>
+                        #}
+                    <button class="bg-green border-1px border-black font-commune text-30" type="submit">
+                        Se connecter
+                    </button>
+                </div>
+			</form>
+            <a href="{{ path('app_register') }}" class="underline text-blue">Pas de compte ? C'est par là.</a>
+		</div>
+	</div>
+{% endblock %}

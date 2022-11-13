@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Commune';
+  src: url('../../fonts/Commune-Nuit_Debout_web.woff2') format('woff2'),
+    url('../../fonts/Commune-Nuit_Debout_web.woff') format('woff'),
+    url('../../fonts/Commune-Nuit_Debout_web.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('../../fonts/HelveticaNeueLight.woff2') format('woff2'),
+    url('../../fonts/HelveticaNeueLight.woff') format('woff'),
+    url('../../fonts/HelveticaNeueLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('../../fonts/HelveticaNeueMedium.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+h1 {
+  @apply text-300 leading-70 font-commune;
+}
+
+h2 {
+  @apply text-100 leading-85 font-commune;
+}
+
+h3 {
+  @apply text-70 leading-140 font-commune;
+}
+
+.subtitle {
+  @apply text-50 text-right font-commune;
+}

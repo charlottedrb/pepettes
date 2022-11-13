@@ -14,6 +14,42 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header class="flex justify-between items-center px-container">
+            <a href="{{ path('app_home') }}"><img src="{{ asset('images/svg/logo.svg') }}" alt=""></a>
+            <nav>
+                <ul class="flex gap-[40px]">
+                    {# <li><input id="research-input" type="text" class="rounded-full border-1px border-blue px-15 placeholder:text-blue focus:outline-none text-blue" placeholder="un tag, une ville..."></li> #}
+                    <li><a href="{{ path('app_place_index') }}">toutes nos adresses</a></li>
+                    <li><a href="{{ path('app_place_best') }}">la crème de la crème</a></li>
+                    {% if app.user %}
+                        <li><a href="{{ path('app_profile') }}">carré vip</a></li>
+                    {% else %}
+                        <li><a href="{{ path('app_login') }}">connexion</a></li>
+                    {% endif %}
+                    
+
+                </ul> 
+            </nav>
+        </header>
+        <main class="mb-130">
+            {% block body %}{% endblock %}
+        </main>
+        <footer class="py-130 bg-black flex justify-center">
+            <div class="w-8/12 flex text-white text-20 gap-x-100">
+                <div class="w-full"><img src="{{ asset('images/svg/logo-white.svg') }}" alt=""></div>
+                <div class="w-full">
+                    <ul>
+                        <li>la crème de la crème</li>
+                        <li>carré vip</li>
+                    </ul>
+                </div>
+                <div class="w-full">
+                    <ul>
+                        <li>notre concept</li>
+                        <li>faq</li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

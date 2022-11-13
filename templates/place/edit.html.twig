@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}modifier une adresse
+{% endblock %}
+
+{% block body %}
+	<div class="flex justify-center mt-130">
+		<div class="w-7/12 flex flex-col gap-y-20">
+			<h2>Modifier une adresse</h2>
+			{{ include('place/_form.html.twig') }}
+		</div>
+	</div>
+{% endblock %}

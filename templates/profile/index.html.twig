@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}carré vip{% endblock %}
+
+{% block body %}
+<div>
+    {% include "partials/header.html.twig" with {'title': 'carré vip', 'subtitle': ''} %}
+    <section class="flex flex-col items-center">
+        <h3 class="w-6/12">réservé pour toi</h3>
+        <div class="w-6/12 grid grid-cols-2 gap-20 grid-rows-2">
+            <a href="{{ path('app_profile') }}" class="bg-red rounded-lg p-30 border-1px border-black cursor-pointer hover:shadow-lg hover:shadow-green transition-all">
+                <span class="text-30">modifier mon profil</span>
+            </a>
+            <a href="{{ path('app_place_new')  }}" class="bg-black text-white rounded-lg p-30 border-1px border-black cursor-pointer hover:shadow-lg hover:shadow-blue transition-all">
+                <span class="text-30">ajouter une nouvelle adresse</span>
+            </a>
+            <a href="{{ path('app_tag_new')  }}" class="bg-green rounded-lg p-30 border-1px border-black cursor-pointer hover:shadow-lg hover:shadow-red transition-all">
+                <span class="text-30">ajouter un tag</span>
+            </a>
+            <a href="{{ path('app_city_new')  }}" class="bg-blue rounded-lg p-30 border-1px border-black cursor-pointer hover:shadow-lg hover:shadow-black transition-all">
+                <span class="text-30">ajouter une ville</span>
+            </a>
+        </div>
+    </section>
+    {% include "partials/baseline.html.twig" %}
+</div>
+{% endblock %}

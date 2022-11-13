@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {% include "partials/header.html.twig" with {'title': 'toutes nos adresses', 'subtitle': 'les meilleurs adresses, selon vous'} %}
+    <section class="flex flex-col px-container">
+        <h3>filtrer par ville</h3>
+        <div class="flex gap-x-20 mb-50">
+            {% for city in cities %}
+                <a href="{{ path('app_place_filter_by_city', {city: city.id}) }}" class="border-1px border-black rounded-full px-15
+                {% if selectedCity is defined and selectedCity == city %}
+                    bg-black text-white
+                {% endif %}
+                ">{{ city.name }}</a>
+            {% endfor %}
+        </div>
+        <div class="grid gap-20 grid-cols-4 w-full">
+            {% for place in places %}
+                {% include "partials/card.html.twig" with {'size': 'grid'} %}
+            {% else %}
+                <p class="font-commune col-span-4 text-30">Pas encore d'adresses de haut niveau dans cette ville. Ça ne saurait tarder.</p>
+            {% endfor %}
+        </div>
+    </section>
+    {% include "partials/baseline.html.twig" %}
+{% endblock %}

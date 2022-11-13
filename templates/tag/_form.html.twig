@@ -1,0 +1,6 @@
+{{ form_start(form, {'attr': {'class': 'flex flex-col gap-y-20'}}) }}
+    {{ form_widget(form.name) }}
+    <h3>{{ form_label(form.places) }}</h3>
+    {{ form_widget(form.places) }}
+    <button class="border-1px border-black bg-green font-commune text-30">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}    

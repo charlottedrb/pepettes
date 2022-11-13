@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ place.name }}
+{% endblock %}
+
+{% block body %}
+	<div class="flex justify-center mt-130">
+		<div class="w-7/12 flex flex-col gap-y-20">
+			<div class="flex justify-between">
+				<div>
+					<h2>{{ place.name }},
+						{{ place.city }}</h2>
+					<div class="flex gap-x-10">
+						{% for tag in place.tags %}
+							<div class="border-1px border-black px-15 rounded-full">{{ tag.name }}</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="flex items-center gap-x-10">
+					<div class="h-[max-content] bg-red font-commune text-30 px-15 rounded-full items-center">
+						{% for i in 1..(place.priceRange) %}€
+						{% endfor %}
+					</div>
+					<div class="h-[max-content] bg-green font-commune text-30 px-15 rounded-full items-center">Tranquilité :
+						{{ place.securityLevel }}</div>
+					<div class="h-[max-content] bg-blue font-commune text-white text-30 px-15 rounded-full items-center">Charos :
+						{{ place.charoRate }}</div>
+				</div>
+			</div>
+			<div class="max-h-[50vh] overflow-hidden rounded-lg border-1px border-black">
+				<img class="object-cover w-full" src="{{ asset('images/places/' ~ place.imageFilename) }}" alt="{{ place.imageFilename }}">
+			</div>
+			<div>
+				<p>{{ place.description }}</p>
+			</div>
+			<div class="grid grid-cols-2">
+				{% if place.tips is not null %}
+					<div>
+						<h3>Tips</h3>
+						<p>{{ place.tips }}</p>
+					</div>
+				{% endif %}
+				{% if place.recommandations is not null %}
+					<div>
+						<h3>Recommandations</h3>
+						<p>{{ place.recommandations }}</p>
+					</div>
+				{% endif %}
+			</div>
+			<div class="">
+				<h3>Avis des autres pépettes</h3>
+				{% for review in reviews %}
+					<div class="flex flex-col p-15 border-1px border-black">
+						<div class="font-commune text-30">{{ review.title }}</div>
+						<p>{{ review.content }}</p>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="">
+				<h3>Ajouter un avis</h3>
+				{{ include('review/_form.html.twig') }}
+			</div>
+		</div>
+	</div>
+{% endblock %}
