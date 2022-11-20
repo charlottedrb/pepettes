@@ -37,7 +37,7 @@ class CityController extends AbstractController
             }
 
             $cityRepository->save($city, true);
-
+            $this->addFlash('success', 'La ville a bien été créée.');
             return $this->redirectToRoute('app_profile', [], Response::HTTP_SEE_OTHER);
         }
 

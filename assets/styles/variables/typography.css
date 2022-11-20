@@ -41,3 +41,15 @@ h3 {
 .subtitle {
   @apply text-50 text-right font-commune;
 }
+
+.alert {
+  @apply fixed top-[10vh] right-0 p-15 border-1px border-r-0 border-black max-w-max;
+
+  &-success {
+    @apply bg-green;
+  }
+
+  &-error {
+    @apply bg-red;
+  }
+}

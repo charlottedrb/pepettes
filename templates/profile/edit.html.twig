@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}modifier mon profil
+{% endblock %}
+
+{% block body %}
+	<div class="flex justify-center mt-130">
+		<div class="w-7/12 flex flex-col gap-y-20">
+			<h2>Modifier mon profil</h2>
+			{{ form_start(form, {'attr': {'class': 'flex flex-col gap-y-20'}}) }}
+			<div class="flex gap-x-10">
+				{{ form_widget(form.email) }}
+			</div>
+			<div class="flex gap-x-10">
+				{{ form_widget(form.first_name) }}
+				{{ form_widget(form.last_name) }}
+			</div>
+			<button class="bg-green border-1px border-black font-commune text-30">{{ button_label|default('Enregistrer') }}</button>
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}

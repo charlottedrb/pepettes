@@ -5,6 +5,16 @@
 {% endblock %}
 
 {% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('error') %}
+		<div class="alert alert-error">
+			{{ message }}
+		</div>
+	{% endfor %}
 	<div class="flex justify-center mt-130">
 		<div class="w-7/12 flex flex-col gap-y-20">
 			<div class="flex justify-between">
@@ -35,13 +45,13 @@
 				<p>{{ place.description }}</p>
 			</div>
 			<div class="grid grid-cols-2">
-				{% if place.tips is not null %}
+				{% if place.tips is not empty %}
 					<div>
 						<h3>Tips</h3>
 						<p>{{ place.tips }}</p>
 					</div>
 				{% endif %}
-				{% if place.recommandations is not null %}
+				{% if place.recommandations is not empty %}
 					<div>
 						<h3>Recommandations</h3>
 						<p>{{ place.recommandations }}</p>
@@ -50,17 +60,35 @@
 			</div>
 			<div class="">
 				<h3>Avis des autres pépettes</h3>
-				{% for review in reviews %}
-					<div class="flex flex-col p-15 border-1px border-black">
-						<div class="font-commune text-30">{{ review.title }}</div>
-						<p>{{ review.content }}</p>
-					</div>
-				{% endfor %}
+				<div class="flex flex-col gap-y-20">
+					{% for review in reviews %}
+						<div class="flex flex-col p-15 border-1px border-black">
+							<div class="flex items-center justify-between">
+								<div class="font-commune text-30">{{ review.title }}</div>
+								<div class="flex items-center gap-x-10">
+									<div>{{ review.getUser() }}</div>
+									{% if is_granted('REVIEW_DELETE', review) %}
+										<span class="rotate-45 cursor-pointer text-blue text-20" title="supprimer mon avis">
+											<form method="post" action="{{ path('app_review_delete', {'id': review.id}) }}" onsubmit="return confirm('Vous êtes sûr(e) de supprimer cet avis?');">
+												<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ review.id) }}">
+												<button>+</button>
+											</form>
+										</span>
+									{% endif %}
+								</div>
+							</div>
+							<p>{{ review.content }}</p>
+						</div>
+					{% else %}
+						<p class="font-commune text-30">Pas d'avis actuellement.</p>
+					{% endfor %}
+				</div>
 			</div>
-			<div class="">
+			<div>
 				<h3>Ajouter un avis</h3>
 				{{ include('review/_form.html.twig') }}
 			</div>
+			<a href="{{ path('app_place_edit', {id: place.id}) }}" class="text-blue underline">Modifier l'adresse</a>
 		</div>
 	</div>
 {% endblock %}

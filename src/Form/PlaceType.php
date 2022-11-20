@@ -2,16 +2,20 @@
 
 namespace App\Form;
 
+use App\Entity\Tag;
 use App\Entity\City;
 use App\Entity\Place;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class PlaceType extends AbstractType
 {
@@ -68,10 +72,52 @@ class PlaceType extends AbstractType
                 'label' => 'Softs',
                 'required' => false,
             ])
-            ->add('tags', ChoiceType::class)
+            ->add('tags', EntityType::class, [
+                'class' => Tag::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+                'label_attr' => ['class' => 'block'],
+            ])
             ->add('city', EntityType::class, [
                 'class' => City::class,
                 'choice_label' => 'name',
+                'label' => 'Ville',
+            ])
+            ->add('imageFilename', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpeg',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Le type de fichier ne correspond pas à une image',
+                    ])
+                ],
+                'label_attr' => ['class' => 'hidden'],
+            ])
+            ->add('description', TextareaType::class, [
+                'label_attr' => ['class' => 'hidden'],
+                'attr' => [
+                    'placeholder' => 'Description',
+                ],
+            ])
+            ->add('tips', TextareaType::class, [
+                'label_attr' => ['class' => 'hidden'],
+                'attr' => [
+                    'placeholder' => 'Tips',
+                    'class' => 'w-full',
+                ],
+            ])
+            ->add('recommandations', TextareaType::class, [
+                'label_attr' => ['class' => 'hidden'],
+                'attr' => [
+                    'placeholder' => 'Recommandations',
+                    'class' => 'w-full',
+                ],
             ])
         ;
     }

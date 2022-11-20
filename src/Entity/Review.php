@@ -26,6 +26,9 @@ class Review
     #[ORM\ManyToOne(inversedBy: 'reviews')]
     private ?Place $place = null;
 
+    #[ORM\ManyToOne(inversedBy: 'reviews')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -63,6 +66,18 @@ class Review
     public function setPlace(?Place $place): self
     {
         $this->place = $place;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
