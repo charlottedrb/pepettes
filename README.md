@@ -10,6 +10,13 @@ Pour que les filles qui veulent sortir sachent où elles vont mettre les pieds. 
 
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/47384185/201544786-ed71919d-6161-43d2-84e7-eccc0a99add0.png">
 
+## Fonctionnalités 
+* Pouvoir créer et modifier un compte utilisateur 
+* Pouvoir créer et modifier une adresse 
+* Pouvoir créer et supprimer un avis (on peut le supprimer uniquement si nous sommes l'auteur(e))
+* Pouvoir créer une ville 
+* Tri par ville possible 
+
 ## Pré-requis 
 
 Le projet utilise Symfony et Yarn. Voici les versions utilisées : 
