@@ -33,7 +33,6 @@ class Place
     #[ORM\Column]
     private ?int $charo_rate = null;
 
-    #[Assert\NotBlank]
     #[ORM\Column]
     private ?bool $has_cocktails = null;
 
@@ -230,7 +229,7 @@ class Place
         return $this->imageFilename;
     }
 
-    public function setImageFilename(string $imageFilename): self
+    public function setImageFilename($imageFilename): self
     {
         $this->imageFilename = $imageFilename;
 
